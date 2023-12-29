@@ -1,0 +1,11 @@
+10/11/2022 command to rename last git commit comment:
+git commit --amend --no-edit -m"new comment"
+
+10/20/2022 size definition reference:
+db - byte        - 1 byte  (8 bits  - FF)
+dw - word        - 2 bytes (16 bits - FF FF)
+dd - double word - 4 bytes (32 bits - FF FF FF FF)
+dq - quad word   - 8 bytes (64 bits - FF FF FF FF FF FF FF FF)
+
+07/08/2023 make commands to build the 64-bit OS version:
+make clean && make build-64-asm -B && make run-64

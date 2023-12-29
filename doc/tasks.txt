@@ -1,0 +1,11 @@
+10/09/2022: understand why the BIOS is emulating the USB flash drive as a floppy disk on physical hardware.
+Comments from OsDev.org:
+https://wiki.osdev.org/ATA_in_x86_RealMode_(BIOS)
+One of the easiest ways to read or write a USB flash drive is to drop into Real or Unreal Mode, and use the INT 0x13 BIOS commands.
+However, the transfer must fit in the usable part of low memory (if in Real Mode), and you need to somehow know the proper drive
+number to use in DL.
+
+BIOS can emulate USB flash drives as a floppy drive or as an hard disk. If the USB drive is emulated as a floppy drive, it is likely
+0x00 or 0x01 and you can only use AH=0x02 and AH=0x03. If it's emulated as an hard disk, it is most likely 0x80 or 0x81 and you can
+also use AH=0x42 and AH=0x43.
+[FIXED] 10/11/2022: The boot loader was missing the BIOS parameter block (BPB) to emulate a DOS 4.0 EBPB 1.44MB floppy.
